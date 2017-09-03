@@ -196,12 +196,12 @@ html
         if settings.display.github
           ul.nav.navbar-nav
             li.pull-left
-              a#github(href="{settings.github}", target='_blank')
+              a#github(href="https://github.com/#{settings.github}", target='_blank')
                 span.glyphicon.fa.fa-github
         if settings.display.slack
           ul.nav.navbar-nav
             li.pull-left
-              a#slack(href="{settings.slack}", target='_blank')
+              a#slack(href="#{settings.slack}", target='_blank')
                 span.glyphicon.fa.fa-slack
         if settings.display.twitter
           ul.nav.navbar-nav
@@ -221,13 +221,13 @@ html
         if settings.display.bitcointalk
           ul.nav.navbar-nav
             li.pull-left
-              a#bitcointalk(href="{settings.bitcointalk}", target='_blank')
+              a#bitcointalk(href="https://bitcointalk.org/index.php?topic=#{settings.bitcointalk}", target='_blank')
                 span.glyphicon.fa.fa-btc
       .col-md-4
         ul.nav
           li.text-center(style='margin-left:80px;margin-right:80px;')
             p(style='margin-top:15px;') 
-              a.navbar-link(href='https://github.com/iquidus/explorer', target='_blank') Powered by Iquidus Explorer 
+              a.navbar-link(href='https://github.com/suprnurd/ciquidus', target='_blank') Ciquidus Explorer 
       span.connections
         label#lblBlockcount.label.label-default -
         label#lblConnections.label.label-default -
