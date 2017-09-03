@@ -1,18 +1,14 @@
-Iquidus Explorer - 1.6.1
+Ciquidus Explorer - 1.6.2
 ================
 
-An open source block explorer written in node.js.
+The Chaincoin block explorer.
+
+This project is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer) so massive thanks go out to Luke Williams for his code! Thank you!!!
 
 ### See it in action
 
-*  [Jumbucks](http://explorer.getjumbucks.com)
-*  [Sphere](http://sphere.iquidus.io)
-*  [SAR](http://explorer.sarcoin.info)
-*  [Vanillacoin](https://blockchain.vanillacoin.net/)
-*  [Neoscoin](http://explorer.infernopool.com/)  
-*  [C2Chain](http://c2chain.info/)
+*  [explorer.chaincoin.org](https://explorer.chaincoin.org)
 
-*note: If you would like your instance mentioned here contact me*
 
 ### Requires
 
@@ -32,7 +28,7 @@ Create databse:
 
 Create user with read/write access:
 
-    > db.createUser( { user: "iquidus", pwd: "3xp!0reR", roles: [ "readWrite" ] } )
+    > db.createUser( { user: "ciquidus", pwd: "3xp!0reR", roles: [ "readWrite" ] } )
 
 *note: If you're using mongo shell 2.4.x, use the following to create your user:
 
@@ -40,7 +36,7 @@ Create user with read/write access:
 
 ### Get the source
 
-    git clone https://github.com/iquidus/explorer explorer
+    git clone https://github.com/alanrudolf/ciquidus explorer
 
 ### Install node modules
 
@@ -98,16 +94,18 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
     */2 * * * * cd /path/to/explorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
     */5 * * * * cd /path/to/explorer && /usr/bin/nodejs scripts/peers.js > /dev/null 2>&1
 
+forcesync.sh and forcesynclatest.sh (located in scripts/) can be used to force the explorer to sync at the specified block heights
+
 ### Wallet
 
-Iquidus Explorer is intended to be generic so it can be used with any wallet following the usual standards. The wallet must be running with atleast the following flags
+The wallet connected to Ciquidus Explorer must be running with atleast the following flags:
 
     -daemon -txindex
 
 ### Donate
-
-    BTC: 168hdKA3fkccPtkxnX8hBrsxNubvk4udJi
-    JBS: JZp9893FMmrm1681bDuJBU7c6w11kyEY7D
+    
+    CHC: CLkWg5YSLod772uLzsFRxHgHiWVGAJSezm
+    BTC: 1J8Chi5teDJrvBtSuQhioNCHfTNBCcCrPx
 
 ### Known Issues
 
@@ -137,6 +135,7 @@ Where [SIZE] is an integer higher than the default.
 
 ### License
 
+Copyright (c) 2017, The Chaincoin Community
 Copyright (c) 2015, Iquidus Technology  
 Copyright (c) 2015, Luke Williams  
 All rights reserved.
