@@ -18,7 +18,8 @@ var app = express();
 chaincoinapi.setWalletDetails(settings.wallet);
 if (settings.heavy != true) {
   chaincoinapi.setAccess('only', ['getinfo', 'getnetworkhashps', 'getmininginfo','getdifficulty', 'getconnectioncount',
-  'getmasternodecount', 'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction', 'getpeerinfo', 'gettxoutsetinfo']);
+  'getmasternodecount', 'getmasternodecountonline', 'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction', 
+  'getpeerinfo', 'gettxoutsetinfo']);
 } else {
   // enable additional heavy api calls
   /*
@@ -33,8 +34,8 @@ if (settings.heavy != true) {
     getmaxmoney - Returns the maximum possible money supply.
   */
   chaincoinapi.setAccess('only', ['getinfo', 'getstakinginfo', 'getnetworkhashps', 'getdifficulty', 'getconnectioncount',
-    'getmasternodecount', 'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction','getmaxmoney', 'getvote',
-    'getmaxvote', 'getphase', 'getreward', 'getnextrewardestimate', 'getnextrewardwhenstr',
+    'getmasternodecount', 'getmasternodecountonline', 'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction', 
+    'getmaxmoney', 'getvote', 'getmaxvote', 'getphase', 'getreward', 'getnextrewardestimate', 'getnextrewardwhenstr',
     'getnextrewardwhensec', 'getsupply', 'gettxoutsetinfo']);
 }
 // view engine setup

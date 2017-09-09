@@ -282,13 +282,6 @@ router.get('/qr/:string', function(req, res) {
   }
 });
 
-router.get('/ext/masternodes', function(req, res) {
-  console.log(masternodes.getMasternodesCount());
-  //console.log(contagem);
-  console.log(masternodes.masternodesCount);
-  res.send(masternodes.getMasternodesCount());
-});
-
 router.get('/ext/summary', function(req, res) {
   lib.get_difficulty(function(difficulty) {
     difficultyHybrid = ''
@@ -305,21 +298,24 @@ router.get('/ext/summary', function(req, res) {
     lib.get_hashrate(function(hashrate) {
       lib.get_connectioncount(function(connections){
         lib.get_masternodecount(function(masternodes){
-          lib.get_blockcount(function(blockcount) {
-            db.get_stats(settings.coin, function (stats) {
-              if (hashrate == 'There was an error. Check your console.') {
-                hashrate = 0;
-              }
-              res.send({ data: [{
-                difficulty: difficulty,
-                difficultyHybrid: difficultyHybrid,
-                supply: stats.supply,
-                hashrate: hashrate,
-                lastPrice: stats.last_price,
-                connections: connections,
-                masternodesCount: masternodes,
-                blockcount: blockcount
-              }]});
+          lib.get_masternodecountonline(function(masternodesonline){
+            lib.get_blockcount(function(blockcount) {
+              db.get_stats(settings.coin, function (stats) {
+                if (hashrate == 'There was an error. Check your console.') {
+                  hashrate = 0;
+                }
+                res.send({ data: [{
+                  difficulty: difficulty,
+                  difficultyHybrid: difficultyHybrid,
+                  supply: stats.supply,
+                  hashrate: hashrate,
+                  lastPrice: stats.last_price,
+                  connections: connections,
+                  masternodeCount: masternodes,
+                  masternodeCountOnline: masternodesonline,
+                  blockcount: blockcount
+                }]});
+              });
             });
           });
         });

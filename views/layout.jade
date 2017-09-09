@@ -28,6 +28,7 @@ html
           $.ajax({url: '/ext/summary', success: function(json){
             $("#supply").text(json.data[0].supply);
             $("#masternodeCount").text(json.data[0].masternodeCount);
+            $("#masternodeCountOnline").text(json.data[0].masternodeCountOnline);
             $("#difficulty").text(json.data[0].difficulty);
             $("#difficultyHybrid").text(json.data[0].difficultyHybrid);
             $("#hashrate").text(json.data[0].hashrate);
@@ -35,7 +36,6 @@ html
             $("#lblConnections").text(json.data[0].connections + ' connections');
             $("#lblBlockcount").text(json.data[0].blockcount + ' blocks');
             $("#lblX1").text(' ');
-            //$("#masterNodesCount").text(json.data[0].masternodesCount);
           }});
         }
         $('.block-last-next').tooltip({
@@ -175,7 +175,8 @@ html
             .panel-heading
               strong #{settings.locale.masternodecount}
             .panel-body
-              label#masternodeCount -
+              label#masternodeCount
+              label#masternodeCountOnline -
         .col-md-2
           .panel.panel-default.hidden-sm.hidden-xs
             .panel-heading
@@ -242,7 +243,7 @@ html
         ul.nav
           li.text-center(style='margin-left:80px;margin-right:80px;')
             p(style='margin-top:15px;')
-              a.navbar-link(href='https://github.com/suprnurd/ciquidus', target='_blank') Ciquidus Explorer
+              a.navbar-link(href='https://github.com/suprnurd/ciquidus', target='_blank') Ciquidus Alpha
       span.connections
         label#lblBlockcount.label.label-default -
         label#lblConnections.label.label-default -
