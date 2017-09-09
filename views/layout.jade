@@ -212,12 +212,12 @@ html
         if settings.display.github
           ul.nav.navbar-nav
             li.pull-left
-              a#github(href="https://github.com/#{settings.github}", target='_blank')
+              a#github-icon(href="https://github.com/#{settings.github}", target='_blank')
                 span.glyphicon.fa.fa-github
         if settings.display.slack
           ul.nav.navbar-nav
             li.pull-left
-              a#slack(href="#{settings.slack}", target='_blank')
+              a#slack-icon(href="#{settings.slack}", target='_blank')
                 span.glyphicon.fa.fa-slack
         if settings.display.twitter
           ul.nav.navbar-nav
@@ -237,7 +237,7 @@ html
         if settings.display.bitcointalk
           ul.nav.navbar-nav
             li.pull-left
-              a#bitcointalk(href="https://bitcointalk.org/index.php?topic=#{settings.bitcointalk}", target='_blank')
+              a#bitcointalk-icon(href="https://bitcointalk.org/index.php?topic=#{settings.bitcointalk}", target='_blank')
                 span.glyphicon.fa.fa-btc
       .col-md-4
         ul.nav
