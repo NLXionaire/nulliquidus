@@ -6,6 +6,7 @@ block content
       .panel-heading
         strong #{settings.locale.api_title}
       .panel-body
+        img(src='#{settings.logo}', style='margin:0;height:128px;')
         :markdown
           *#{settings.locale.api_message}*
           
@@ -21,6 +22,10 @@ block content
           *  **getconnectioncount**  
              *#{settings.locale.api_getconnectioncount}*  
              [#{address}/api/getconnectioncount](/api/getconnectioncount) 
+
+          *  **getmasternodecount**  
+             *#{settings.locale.api_getmasternodecount}*  
+             [#{address}/api/getmasternodecount](/api/getmasternodecount)              
 
           *  **getblockcount**  
              *#{settings.locale.api_getblockcount}*  
