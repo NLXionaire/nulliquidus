@@ -1,5 +1,11 @@
 Note: All updates require the explorer to be restarted
 
+1.6.2 -> 1.7.0
+* Added master node count
+* Added chaincoin-json-api and node-chaincoin modules
+* added website link (see settings.json.template)
+* moved logo to api page
+
 1.6.1 -> 1.6.2
 * Added bitcointalk, slack, and github links (see settings.json.template)
 * Added super hacky forcesync scripts to enable syncing newest blocks during initial database sync

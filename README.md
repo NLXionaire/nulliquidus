@@ -1,4 +1,4 @@
-Ciquidus Explorer - 1.6.2
+Ciquidus Alpha - 1.7.0
 ================
 
 The Chaincoin block explorer.
@@ -36,7 +36,7 @@ Create user with read/write access:
 
 ### Get the source
 
-    git clone https://github.com/alanrudolf/ciquidus explorer
+    git clone https://github.com/suprnurd/ciquidus explorer
 
 ### Install node modules
 
@@ -98,7 +98,7 @@ forcesync.sh and forcesynclatest.sh (located in scripts/) can be used to force t
 
 ### Wallet
 
-The wallet connected to Ciquidus Explorer must be running with atleast the following flags:
+The wallet connected to Ciquidus must be running with atleast the following flags:
 
     -daemon -txindex
 
