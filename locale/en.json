@@ -43,6 +43,7 @@
 
     // global
     "difficulty": "Difficulty",
+    "masternodecount": "Master Nodes",
     "network": "Network",
     "height": "Height",
     "timestamp": "Timestamp",
@@ -89,6 +90,7 @@
     "api_getnetworkhashps": "Returns the current network hashrate. (hash/s)",
     "api_getdifficulty": "Returns the current difficulty.",
     "api_getconnectioncount": "Returns the number of connections the block explorer has to other nodes.",
+    "api_getmasternodecount": "Returns the number of master nodes on the network.",
     "api_getblockcount": "Returns the current block index.",
     "api_getblockhash": "Returns the hash of the block at ; index 0 is the genesis block.",
     "api_getblock": "Returns information about the block with the given hash.",

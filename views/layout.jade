@@ -27,6 +27,7 @@ html
         function update_stats(){
           $.ajax({url: '/ext/summary', success: function(json){
             $("#supply").text(json.data[0].supply);
+            $("#masternodeCount").text(json.data[0].masternodeCount);
             $("#difficulty").text(json.data[0].difficulty);
             $("#difficultyHybrid").text(json.data[0].difficultyHybrid);
             $("#hashrate").text(json.data[0].hashrate);
@@ -170,6 +171,12 @@ html
               else
                label#difficulty -
         .col-md-2
+         .panel.panel-default.hidden-sm.hidden-xs
+            .panel-heading
+              strong #{settings.locale.masternodecount}
+            .panel-body
+              label#masternodeCount -
+        .col-md-2
           .panel.panel-default.hidden-sm.hidden-xs
             .panel-heading
               strong #{settings.locale.ex_supply} (#{settings.symbol})
@@ -191,14 +198,6 @@ html
                label#lblX1
               else
                label#lastPrice -
-
-
-        .col-md-2
-         .panel.panel-default.hidden-sm.hidden-xs
-            .panel-heading
-              strong #{settings.locale.masternodes_text_count}
-            .panel-body
-              label#masterNodesCount ?
 
 
       .row.text-center(style='margin-top:10px;margin-bottom:20px;')
