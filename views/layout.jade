@@ -236,6 +236,11 @@ html
             li.pull-left
               a#bitcointalk-icon(href="https://bitcointalk.org/index.php?topic=#{settings.bitcointalk}", target='_blank')
                 span.glyphicon.fa.fa-btc
+        if settings.display.website
+          ul.nav.navbar-nav
+            li.pull-left
+              a#website-icon(href="#{settings.website}", target='_blank')
+                span.glyphicon.fa.fa-link
       .col-md-4
         ul.nav
           li.text-center(style='margin-left:80px;margin-right:80px;')

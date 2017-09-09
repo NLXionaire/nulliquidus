@@ -67,6 +67,7 @@
     "facebook": false,
     "googleplus": false,
     "bitcointalk": false,
+    "website': false,
     "slack": false,
     "github": false,
     "search": true,
@@ -117,13 +118,14 @@
     "high_flag": 5000
   },
 
-  // twitter, facebook, googleplus, bitcointalk, github, slack
+  // twitter, facebook, googleplus, bitcointalk, github, slack, website
   "twitter": "suprnurd",
   "facebook": "yourfacebookpage",
   "googleplus": "yourgooglepluspage",
   "bitcointalk": "yourbitcointalktopicvalue",
   "github": "yourgithubusername/yourgithubrepo",
   "slack": "yourfullslackinviteurl",
+  "website": "yourfullwebsiteurl",
 
   //genesis
   "genesis_tx": "fa6ef9872494fa9662cf0fecf8c0135a6932e76d7a8764e1155207f3205c7c88",

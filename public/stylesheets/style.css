@@ -100,6 +100,7 @@ tr {
 #facebook-icon, 
 #googleplus-icon, 
 #bitcointalk-icon, 
+#website-icon, 
 #github-icon, 
 #slack-icon {
 	font-size: 20px;
@@ -119,6 +120,7 @@ tr {
 #facebook-icon img, 
 #googleplus-icon img, 
 #bitcointalk-icon img, 
+#website-icon img, 
 #github-icon img, 
 #slack-icon img{
 	width: 40px;

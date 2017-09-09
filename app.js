@@ -120,6 +120,7 @@ app.set('googleplus', settings.googleplus);
 app.set('bitcointalk', settings.bitcointalk);
 app.set('slack', settings.slack);
 app.set('github', settings.github);
+app.set('website', settings.website);
 app.set('genesis_block', settings.genesis_block);
 app.set('index', settings.index);
 app.set('heavy', settings.heavy);
