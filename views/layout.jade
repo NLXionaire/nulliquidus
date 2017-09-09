@@ -146,23 +146,27 @@ html
               else if settings.nethash_units == 'H'
                 strong #{settings.locale.network} (H/s)
             .panel-body
-              if settings.index.difficulty == 'Hybrid'
-               label#hashrate -
-               <br>
-               label#lblX1
-              else
-               label#hashrate -
+              #hashratepanel
+                span.glyphicon.fa.fa-gears
+                if settings.index.difficulty == 'Hybrid'
+                  label#hashrate -
+                  <br>
+                  label#lblX1
+                else
+                  label#hashrate -
         .col-md-2
           .panel.panel-default.hidden-sm.hidden-xs
             .panel-heading
               strong #{settings.locale.difficulty}
             .panel-body
-              if settings.index.difficulty == 'Hybrid'
-               label#difficulty -
-               <br>
-               label#difficultyHybrid -
-              else
-               label#difficulty -
+              #difficultypanel
+                span.glyphicon.fa.fa-sliders
+                if settings.index.difficulty == 'Hybrid'
+                  label#difficulty -
+                  <br>
+                  label#difficultyHybrid -
+                else
+                  label#difficulty -
         .col-md-2
          .panel.panel-default.hidden-sm.hidden-xs
             .panel-heading
@@ -179,24 +183,27 @@ html
             .panel-heading
               strong #{settings.locale.ex_supply} (#{settings.symbol})
             .panel-body
-              if settings.index.difficulty == 'Hybrid'
-               label#supply -
-               <br>
-               label#lblX1
-              else
-               label#supply -
+              #supplypanel
+                span.glyphicon.fa.fa-pie-chart
+                if settings.index.difficulty == 'Hybrid'
+                  label#supply -
+                  <br>
+                  label#lblX1
+                else
+                  label#supply -
         .col-md-2
           .panel.panel-default.hidden-sm.hidden-xs
             .panel-heading
               strong #{settings.markets.exchange} Price
             .panel-body
-              if settings.index.difficulty == 'Hybrid'
-               label#lastPrice -
-               <br>
-               label#lblX1
-              else
-               label#lastPrice -
-
+              #pricepanel
+                span.glyphicon.fa.fa-rocket
+                if settings.index.difficulty == 'Hybrid'
+                  label#lastPrice -
+                  <br>
+                  label#lblX1
+                else
+                  label#lastPrice -                
 
       .row.text-center(style='margin-top:10px;margin-bottom:20px;')
         form.form-inline(method='post', action='/search')
