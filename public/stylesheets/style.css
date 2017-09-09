@@ -96,9 +96,15 @@ tr {
 	margin-left:5px;
 }
 
-#twitter-icon {
+#twitter-icon
+#facebook-icon
+#googleplus-icon
+#bitcointalk-icon
+#github-icon
+#slack-icon {
 	font-size: 20px;
 }
+
 .connections {
 	position: absolute;
 	bottom: 15px;
@@ -109,7 +115,12 @@ tr {
 	margin-right: 10px;
 }
 
-#twitter-icon img{
+#twitter-icon 
+#facebook-icon
+#googleplus-icon
+#bitcointalk-icon
+#github-icon
+#slack-icon img{
 	width: 40px;
 	margin: 5px 5px;
 }
