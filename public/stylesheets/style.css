@@ -96,11 +96,11 @@ tr {
 	margin-left:5px;
 }
 
-#twitter-icon
-#facebook-icon
-#googleplus-icon
-#bitcointalk-icon
-#github-icon
+#twitter-icon, 
+#facebook-icon, 
+#googleplus-icon, 
+#bitcointalk-icon, 
+#github-icon, 
 #slack-icon {
 	font-size: 20px;
 }
@@ -115,11 +115,11 @@ tr {
 	margin-right: 10px;
 }
 
-#twitter-icon 
-#facebook-icon
-#googleplus-icon
-#bitcointalk-icon
-#github-icon
+#twitter-icon img, 
+#facebook-icon img, 
+#googleplus-icon img, 
+#bitcointalk-icon img, 
+#github-icon img, 
 #slack-icon img{
 	width: 40px;
 	margin: 5px 5px;
