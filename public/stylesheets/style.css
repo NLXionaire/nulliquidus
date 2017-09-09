@@ -129,6 +129,11 @@ tr {
 	margin-bottom: 5px;
 }
 
+#masternodepanel span{
+	margin: 0 5px 0 5px;
+	top: 0;
+}
+
 .label a:link {
 	color: #ffffff;
 }
