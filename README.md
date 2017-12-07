@@ -1,4 +1,4 @@
-Ciquidus Alpha - 1.7.0
+Ciquidus Alpha - 1.7.1
 ================
 
 The Chaincoin block explorer.
