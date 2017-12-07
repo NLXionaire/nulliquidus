@@ -27,6 +27,4 @@ node_modules
 settings.json
 .idea
 *~
-*.ico
-*.png
-
+.DS_Store
