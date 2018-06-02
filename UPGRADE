@@ -1,5 +1,8 @@
 Note: All updates require the explorer to be restarted
 
+1.7.1 -> 1.7.2
+* Updated dependency to chaincoin-node-api to support masternode count in 0.16 code
+
 1.7.0 -> 1.7.1
 * Added full masternodelist
 * Added masternode votes (undocumented)
