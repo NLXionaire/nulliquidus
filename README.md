@@ -1,20 +1,15 @@
-Ciquidus Alpha - 1.7.2
+Nulliquidus - 1.0.0
 ================
 
-The Chaincoin block explorer.
+The NulleX block explorer.
 
-This project is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer) so massive thanks go out to Luke Williams for his code! Thank you!!!
-
-### See it in action
-
-*  [explorer.chaincoin.org](https://explorer.chaincoin.org)
-
+This project is a fork of [Ciquidus Explorer](https://github.com/suprnurd/ciquidus) which is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer). Shoutouts to both Luke Williams for the original code and Alan Rudolf for all the additional bonus featues which saved me tons of time! I'm only standing on the backs of giants. Thank you both!!!
 
 ### Requires
 
-*  node.js >= 0.10.28
-*  mongodb 2.6.x
-*  *coind
+-  node.js >= 0.10.28
+-  mongodb 2.6.x
+-  *coind
 
 ### Create database
 
@@ -28,15 +23,15 @@ Create databse:
 
 Create user with read/write access:
 
-    > db.createUser( { user: "ciquidus", pwd: "3xp!0reR", roles: [ "readWrite" ] } )
+    > db.createUser( { user: "nulliquidus", pwd: "eR5n+x*lhM49c6-c", roles: [ "readWrite" ] } )
 
-*note: If you're using mongo shell 2.4.x, use the following to create your user:
+**NOTE:** If you're using mongo shell 2.4.x, use the following to create your user:
 
     > db.addUser( { user: "username", pwd: "password", roles: [ "readWrite"] })
 
 ### Get the source
 
-    git clone https://github.com/suprnurd/ciquidus explorer
+    git clone https://github.com/NLXionaire/nulliquidus explorer
 
 ### Install node modules
 
@@ -52,9 +47,9 @@ Create user with read/write access:
 
     npm start
 
-*note: mongod must be running to start the explorer*
+**NOTE:** mongod must be running to start the explorer*
 
-As of version 1.4.0 the explorer defaults to cluster mode, forking an instance of its process to each cpu core. This results in increased performance and stability. Load balancing gets automatically taken care of and any instances that for some reason die, will be restarted automatically. For testing/development (or if you just wish to) a single instance can be launched with
+The explorer defaults to cluster mode, forking an instance of its process to each cpu core. This results in increased performance and stability. Load balancing gets automatically taken care of and any instances that for some reason die, will be restarted automatically. For testing/development (or if you just wish to) a single instance can be launched with
 
     node --stack-size=10000 bin/instance
 
@@ -83,7 +78,6 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
     * If check mode finds missing data(ignoring new data since last sync),
       index_timeout in settings.json is set too low.
 
-
 *It is recommended to have this script launched via a cronjob at 1+ min intervals.*
 
 **crontab**
@@ -94,18 +88,16 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
     */2 * * * * cd /path/to/explorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
     */5 * * * * cd /path/to/explorer && /usr/bin/nodejs scripts/peers.js > /dev/null 2>&1
 
-forcesync.sh and forcesynclatest.sh (located in scripts/) can be used to force the explorer to sync at the specified block heights
-
 ### Wallet
 
-The wallet connected to Ciquidus must be running with atleast the following flags:
+The wallet connected to Nulliquidus must be running with the following flags:
 
     -daemon -txindex
 
 ### Donate
     
-    CHC: CLkWg5YSLod772uLzsFRxHgHiWVGAJSezm
-    BTC: 1J8Chi5teDJrvBtSuQhioNCHfTNBCcCrPx
+    NLX: AK45Jk32qmDZrbFKCzq1ihDu39nEaueVdE
+    BTC: 1BG5Zx8UTKqSEwDGx33dZN36jC2cSC4ZmY
 
 ### Known Issues
 
@@ -135,7 +127,8 @@ Where [SIZE] is an integer higher than the default.
 
 ### License
 
-Copyright (c) 2017, The Chaincoin Community  
+Copyright (c) 2018, The NulleX Community
+Copyright (c) 2017, The Chaincoin Community
 Copyright (c) 2015, Iquidus Technology  
 Copyright (c) 2015, Luke Williams  
 All rights reserved.

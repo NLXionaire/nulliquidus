@@ -5,21 +5,27 @@
 */
 {
   // name your instance!
-  "title": "CIQUIDUS",
+  "title": "NULLIQUIDUS",
 
   "address": "127.0.0.1:3001",
 
   // coin name
-  "coin": "Chaincoin",
+  "coin": "NulleX",
 
   // coin symbol
-  "symbol": "CHC",
+  "symbol": "NLX",
 
   // logo
-  "logo": "/images/chain_dark-128x128.png",
+  "logo": "/images/nullex-logo.png",
 
   // favicon
   "favicon": "public/favicon.ico",
+  
+  // home link (valid options are: title, coin, logo)
+  "homelink":  "coin",
+  
+  // home link logo height (value in px, only valid if using homelink = 'logo')
+  "logoheight":  50,
 
   // Uses bootswatch themes (http://bootswatch.com/)
   // Valid options:
@@ -33,8 +39,8 @@
 
   // database settings (MongoDB)
   "dbsettings": {
-    "user": "ciquidus",
-    "password": "3xp!0reR",
+    "user": "nulliquidus",
+    "password": "eR5n+x*lhM49c6-c",
     "database": "explorerdb",
     "address": "localhost",
     "port": 27017
@@ -47,9 +53,9 @@
   // wallet settings
   "wallet": {
     "host": "localhost",
-    "port": 11995,
-    "user": "chaincoinrpc",
-    "pass": "123gfjk3R3pCCVjHtbRde2s5kzdf233sa"
+    "port": 46201,
+    "user": "nullexrpc",
+    "pass": "qn6&z**@$N7$2677=#S&7-53N2&7&l&g"
   },
 
   // confirmations
@@ -58,7 +64,8 @@
   // language settings
   "locale": "locale/en.json",
 
-  // menu settings
+  // menu and panel settings
+  // set a number to pnl variables to change the panel display order. lowest # = far left panel, highest # = far right panel, 0 = do not show panel
   "display": {
     "api": true,
     "markets": true,
@@ -72,34 +79,39 @@
     "github": false,
     "search": true,
     "movement": true,
-    "network": true
+    "network": true,
+    "networkpnl": 1,
+    "difficultypnl": 2,
+    "masternodespnl": 3,
+    "coinsupplypnl": 4,
+    "pricepnl": 5
   },
 
   // index page (valid options for difficulty are POW, POS or Hybrid)
   "index": {
     "show_hashrate": true,
-    "difficulty": "POW",
+    "difficulty": "POS",
     "last_txs": 100
   },
 
   // ensure links on API page are valid
   "api": {
-    "blockindex": 1337,
-    "blockhash": "00000000001b8c30360db57b575b3c2bf668b0ed50683f567afd47ae1773efb8",
-    "txhash": "285feead54e322aa69f649c4078766171df358a12f5f1517d61f303780e25511",
-    "address": "CaxX1HVWzbQ516w61XbtHR63vNmp2mvLMZ"
+    "blockindex": 6415,
+    "blockhash": "000000eb7e703c4a73d22c78b42333ba91cc5cb6cec0e54ddb22964fcbddc263",
+    "txhash": "5e412c52ab5595baa11c3bf9fbd3342a630016db5814e9ff30cd1514826a689c",
+    "address": "AXx1ePiu3jPHJjZ8HZtorxjQLpChtqgVUm"
   },
 
   // market settings
   //supported markets: bittrex, poloniex, yobit, empoex, bleutrade, cryptopia, ccex, coinexchange
   //default market is loaded by default and determines last price in header
   "markets": {
-    "coin": "CHC",
+    "coin": "NLX",
     "exchange": "BTC",
     "enabled": ["cryptopia"],
-    "cryptopia_id": "2186",
+    "cryptopia_id": "4552",
     "ccex_key" : "Get-Your-Own-Key",
-    "coinexchange_id": "18",
+    "coinexchange_id": "",
     "default": "cryptopia"
   },
 
@@ -120,7 +132,7 @@
   },
 
   // twitter, facebook, googleplus, bitcointalk, github, slack, website
-  "twitter": "suprnurd",
+  "twitter": "youttwitterpage",
   "facebook": "yourfacebookpage",
   "googleplus": "yourgooglepluspage",
   "bitcointalk": "yourbitcointalktopicvalue",
@@ -129,8 +141,8 @@
   "website": "yourfullwebsiteurl",
 
   //genesis
-  "genesis_tx": "fa6ef9872494fa9662cf0fecf8c0135a6932e76d7a8764e1155207f3205c7c88",
-  "genesis_block": "00000f639db5734b2b861ef8dbccc33aebd7de44d13de000a12d093bcc866c64",
+  "genesis_tx": "3bcd33b7d38538c060ba28f02dc983e364bb7b84303b505c216c2c0fb935568e",
+  "genesis_block": "000006cacaa033d02e73700344ec669171a2fa30cf310861cf46f8d92641450a",
 
   //heavy (enable/disable additional heavy features)
   "heavy": false,

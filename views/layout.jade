@@ -27,8 +27,10 @@ html
         function update_stats(){
           $.ajax({url: '/ext/summary', success: function(json){
             $("#supply").text(json.data[0].supply);
-            $("#masternodeCountOnline").text(json.data[0].masternodeCountOnline);
-            $("#masternodeCountOffline").text(json.data[0].masternodeCountOffline);
+            $("#masternodeCountOnline").text(json.data[0].masternodeCountOnline).prop("alt", json.data[0].masternodeCountOnline+" nodes online").prop("title", json.data[0].masternodeCountOnline+" nodes online");
+            $("#masternodeCountOffline").text(json.data[0].masternodeCountOffline).prop("alt", json.data[0].masternodeCountOffline+" unreachable nodes").prop("title", json.data[0].masternodeCountOffline+" unreachable nodes");
+            $("#spnMasternodeCountOnline").prop("alt", json.data[0].masternodeCountOnline+" nodes online").prop("title", json.data[0].masternodeCountOnline+" nodes online");
+            $("#spnMasternodeCountOffline").prop("alt", json.data[0].masternodeCountOffline+" unreachable nodes").prop("title", json.data[0].masternodeCountOffline+" unreachable nodes");
             $("#difficulty").text(json.data[0].difficulty);
             $("#difficultyHybrid").text(json.data[0].difficultyHybrid);
             $("#hashrate").text(json.data[0].hashrate);
@@ -57,6 +59,80 @@ html
           update_stats();
         }, 60000);
         update_stats();
+        function getNetworkPanel() {
+          var networkSuffix='';
+          switch ('#{settings.nethash_units}') {
+            case "K":
+              networkSuffix='(KH/s)';
+              break;
+            case "M":
+              networkSuffix='(MH/s)';
+              break;
+            case "G":
+              networkSuffix='(GH/s)';
+              break;
+            case "T":
+              networkSuffix='(TH/s)';
+              break;
+            case "P":
+              networkSuffix='(PH/s)';
+              break;
+            case "H":
+              networkSuffix='(H/s)';
+              break;
+          }
+          var hashRateType='<label id="hashrate"></label>';
+          if ('#{settings.index.difficulty}' == 'Hybrid') hashRateType+='<br /><label id="lblX1"></label>';
+          return '<div class="panel-heading"><strong>#{settings.locale.network} '+networkSuffix+'</strong></div><div class="panel-body"><div id="hashratepanel"><span class="glyphicon fa fa-gears"></span>'+hashRateType+'</div></div>';
+        }
+        function getDifficultyPanel() {
+          var difficultyType='<label id="difficulty"></label>';
+          if ('#{settings.index.difficulty}' == 'Hybrid') difficultyType+='<br /><label id="difficultyHybrid"></label>';
+          return '<div class="panel-heading"><strong>#{settings.locale.difficulty}</strong></div><div class="panel-body"><div id="difficultypanel"><span class="glyphicon fa fa-sliders"></span>'+difficultyType+'</div></div>';
+        }
+        function getMasternodesPanel() {
+          return '<div class="panel-heading"><strong>#{settings.locale.masternodecount}</strong></div><div class="panel-body"><div id="masternodepanel"><span id="spnMasternodeCountOffline" class="glyphicon fa fa-exclamation-triangle"></span><label id="masternodeCountOffline"></label><label>&nbsp;/&nbsp;</label><label id="masternodeCountOnline"></label><span id="spnMasternodeCountOnline" class="glyphicon fa fa-check-circle"></span></div></div>';
+        }
+        function getCoinSupplyPanel() {
+          var supplyType='<label id="supply"></label>';
+          if ('#{settings.index.difficulty}' == 'Hybrid') supplyType+='<br /><label id="lblX1"></label>';
+          return '<div class="panel-heading"><strong>#{settings.locale.ex_supply} (#{settings.symbol})</strong></div><div class="panel-body"><div id="supplypanel"><span class="glyphicon fa fa-pie-chart"></span>'+supplyType+'</div></div>';
+        }
+        function getPricePanel() {
+          var priceType='<label id="lastPrice"></label>';
+          if ('#{settings.index.difficulty}' == 'Hybrid') priceType+='<br /><label id="lblX1"></label>';
+          return '<div class="panel-heading"><strong>#{settings.markets.exchange} Price</strong></div><div class="panel-body"><div id="pricepanel"><span class="glyphicon fa fa-rocket"></span>'+priceType+'</div></div>';
+        }
+        function getActivePanel(nPanelName) {
+          var sReturn='';
+          switch (nPanelName) {
+            case "networkpnl":
+              sReturn=getNetworkPanel();
+              break;
+            case "difficultypnl":
+              sReturn=getDifficultyPanel();
+              break;
+            case "masternodespnl":
+              sReturn=getMasternodesPanel();
+              break;
+            case "coinsupplypnl":
+              sReturn=getCoinSupplyPanel();
+              break;
+            case "pricepnl":
+              sReturn=getPricePanel();
+              break;
+          }
+          return sReturn;
+        }
+        function hideShowPanel(sPanelID, sPanelName) {
+          var oPanel = document.getElementById(sPanelName);
+          if (typeof(oPanel) != 'undefined' && oPanel != null) document.getElementById(sPanelName).innerHTML=getActivePanel(sPanelID);
+        }
+        hideShowPanel('#{settings.panel1}', 'pnlOne');
+        hideShowPanel('#{settings.panel2}', 'pnlTwo');
+        hideShowPanel('#{settings.panel3}', 'pnlThree');
+        hideShowPanel('#{settings.panel4}', 'pnlFour');
+        hideShowPanel('#{settings.panel5}', 'pnlFive');
       });
   body
     - function format_unixtime(unixtime) {
@@ -85,14 +161,24 @@ html
       - return time
     -  };
     .nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
-      .container-fluid
+      - if(settings.homelink == 'logo') {
+          .container-fluid(style='padding-left:0;')
+      - } else {
+          .container-fluid
+      - }
         .navbar-header
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
             span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/') #{settings.coin}
+          if settings.homelink == 'title'
+            a.navbar-brand(href='/') #{settings.title}
+          else if settings.homelink == 'coin'
+            a.navbar-brand(href='/') #{settings.coin}
+          else if settings.homelink == 'logo'
+            a(href='/', alt='#{settings.coin} Home', title='#{settings.coin} Home')
+              img.logo-main(src='#{settings.logo}', style='margin:0;max-height:#{settings.logoheight}px;')
         .collapse.navbar-collapse(id='navbar-collapse')
           ul.nav.navbar-nav
             li#home
@@ -132,80 +218,26 @@ html
 
     .col-md-12
       .row.text-center
-        .col-md-2.col-md-offset-1
-          .panel.panel-default.hidden-sm.hidden-xs
-            .panel-heading
-              if settings.nethash_units == 'K'
-                strong #{settings.locale.network} (KH/s)
-              else if settings.nethash_units == 'M'
-                strong #{settings.locale.network} (MH/s)
-              else if settings.nethash_units == 'G'
-                strong #{settings.locale.network} (GH/s)
-              else if settings.nethash_units == 'T'
-                strong #{settings.locale.network} (TH/s)
-              else if settings.nethash_units == 'P'
-                strong #{settings.locale.network} (PH/s)
-              else if settings.nethash_units == 'H'
-                strong #{settings.locale.network} (H/s)
-            .panel-body
-              #hashratepanel
-                span.glyphicon.fa.fa-gears
-                if settings.index.difficulty == 'Hybrid'
-                  label#hashrate -
-                  <br>
-                  label#lblX1
-                else
-                  label#hashrate -
+        div(class="col-md-2 col-md-offset-#{settings.paneloffset}")
+          - if(settings.panel1 != '') {
+            .panel.panel-default.hidden-sm.hidden-xs(id='pnlOne')
+          - }
+        - if(settings.panel2 != '') {
+          .col-md-2
+            .panel.panel-default.hidden-sm.hidden-xs(id='pnlTwo')
+        - }
+        - if(settings.panel3 != '') {
+          .col-md-2
+           .panel.panel-default.hidden-sm.hidden-xs(id='pnlThree')
+        - }
+        - if(settings.panel4 != '') {
+          .col-md-2
+            .panel.panel-default.hidden-sm.hidden-xs(id='pnlFour')
+        - }
+        - if(settings.panel5 != '') {
         .col-md-2
-          .panel.panel-default.hidden-sm.hidden-xs
-            .panel-heading
-              strong #{settings.locale.difficulty}
-            .panel-body
-              #difficultypanel
-                span.glyphicon.fa.fa-sliders
-                if settings.index.difficulty == 'Hybrid'
-                  label#difficulty -
-                  <br>
-                  label#difficultyHybrid -
-                else
-                  label#difficulty -
-        .col-md-2
-         .panel.panel-default.hidden-sm.hidden-xs
-            .panel-heading
-              strong #{settings.locale.masternodecount}
-            .panel-body
-              #masternodepanel
-                span.glyphicon.fa.fa-exclamation-triangle
-                label#masternodeCountOffline -
-                label &nbsp;&#x2F;&nbsp;        
-                label#masternodeCountOnline -
-                span.glyphicon.fa.fa-check-circle
-        .col-md-2
-          .panel.panel-default.hidden-sm.hidden-xs
-            .panel-heading
-              strong #{settings.locale.ex_supply} (#{settings.symbol})
-            .panel-body
-              #supplypanel
-                span.glyphicon.fa.fa-pie-chart
-                if settings.index.difficulty == 'Hybrid'
-                  label#supply -
-                  <br>
-                  label#lblX1
-                else
-                  label#supply -
-        .col-md-2
-          .panel.panel-default.hidden-sm.hidden-xs
-            .panel-heading
-              strong #{settings.markets.exchange} Price
-            .panel-body
-              #pricepanel
-                span.glyphicon.fa.fa-rocket
-                if settings.index.difficulty == 'Hybrid'
-                  label#lastPrice -
-                  <br>
-                  label#lblX1
-                else
-                  label#lastPrice -                
+          .panel.panel-default.hidden-sm.hidden-xs(id='pnlFive')
+        - }
 
       .row.text-center(style='margin-top:10px;margin-bottom:20px;')
         form.form-inline(method='post', action='/search')
@@ -254,7 +286,7 @@ html
         ul.nav
           li.text-center(style='margin-left:80px;margin-right:80px;')
             p(style='margin-top:15px;')
-              a.navbar-link(href='https://github.com/suprnurd/ciquidus', target='_blank') Ciquidus Alpha
+              a.navbar-link(href='https://github.com/NLXionaire/nulliquidus', target='_blank') Nulliquidus Explorer
       span.connections
         label#lblBlockcount.label.label-default -
         label#lblConnections.label.label-default -
