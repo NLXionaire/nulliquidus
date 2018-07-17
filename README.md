@@ -3,7 +3,7 @@ Nulliquidus - 1.0.0
 
 The NulleX block explorer.
 
-This project is a fork of [Ciquidus Explorer](https://github.com/suprnurd/ciquidus) which is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer). Shoutouts to both Luke Williams for the original code and Alan Rudolf for all the additional bonus featues which saved me tons of time! I'm only standing on the backs of giants. Thank you both!!!
+This project is a fork of [Ciquidus Explorer](https://github.com/suprnurd/ciquidus) which is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer). Shoutouts to both Luke Williams for the original code and Alan Rudolf for all the additional bonus featues which saved me tons of time! I'm only standing on the shoulders of giants. Thank you both!!!
 
 ### Requires
 
@@ -127,8 +127,8 @@ Where [SIZE] is an integer higher than the default.
 
 ### License
 
-Copyright (c) 2018, The NulleX Community
-Copyright (c) 2017, The Chaincoin Community
+Copyright (c) 2018, The NulleX Community  
+Copyright (c) 2017, The Chaincoin Community  
 Copyright (c) 2015, Iquidus Technology  
 Copyright (c) 2015, Luke Williams  
 All rights reserved.
