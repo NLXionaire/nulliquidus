@@ -5,7 +5,7 @@ html
     link(rel='stylesheet', href='/themes/#{settings.theme}/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/jqplot/jquery.jqplot.css')
     link(rel='stylesheet', href='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css')
-    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='//use.fontawesome.com/releases/v5.2.0/css/all.css', integrity='sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ', crossorigin='anonymous')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
@@ -83,12 +83,12 @@ html
           }
           var hashRateType='<label id="hashrate"></label>';
           if ('#{settings.index.difficulty}' == 'Hybrid') hashRateType+='<br /><label id="lblX1"></label>';
-          return '<div class="panel-heading"><strong>#{settings.locale.network} '+networkSuffix+'</strong></div><div class="panel-body"><div id="hashratepanel"><span class="glyphicon fa fa-gears"></span>'+hashRateType+'</div></div>';
+          return '<div class="panel-heading"><strong>#{settings.locale.network} '+networkSuffix+'</strong></div><div class="panel-body"><div id="hashratepanel"><span class="glyphicon fa fa-cogs"></span>'+hashRateType+'</div></div>';
         }
         function getDifficultyPanel() {
           var difficultyType='<label id="difficulty"></label>';
           if ('#{settings.index.difficulty}' == 'Hybrid') difficultyType+='<br /><label id="difficultyHybrid"></label>';
-          return '<div class="panel-heading"><strong>#{settings.locale.difficulty}</strong></div><div class="panel-body"><div id="difficultypanel"><span class="glyphicon fa fa-sliders"></span>'+difficultyType+'</div></div>';
+          return '<div class="panel-heading"><strong>#{settings.locale.difficulty}</strong></div><div class="panel-body"><div id="difficultypanel"><span class="glyphicon fas fa-sliders-h"></span>'+difficultyType+'</div></div>';
         }
         function getMasternodesPanel() {
           return '<div class="panel-heading"><strong>#{settings.locale.masternodecount}</strong></div><div class="panel-body"><div id="masternodepanel"><span id="spnMasternodeCountOffline" class="glyphicon fa fa-exclamation-triangle"></span><label id="masternodeCountOffline"></label><label>&nbsp;/&nbsp;</label><label id="masternodeCountOnline"></label><span id="spnMasternodeCountOnline" class="glyphicon fa fa-check-circle"></span></div></div>';
@@ -96,7 +96,7 @@ html
         function getCoinSupplyPanel() {
           var supplyType='<label id="supply"></label>';
           if ('#{settings.index.difficulty}' == 'Hybrid') supplyType+='<br /><label id="lblX1"></label>';
-          return '<div class="panel-heading"><strong>#{settings.locale.ex_supply} (#{settings.symbol})</strong></div><div class="panel-body"><div id="supplypanel"><span class="glyphicon fa fa-pie-chart"></span>'+supplyType+'</div></div>';
+          return '<div class="panel-heading"><strong>#{settings.locale.ex_supply} (#{settings.symbol})</strong></div><div class="panel-body"><div id="supplypanel"><span class="glyphicon fa fa-chart-pie"></span>'+supplyType+'</div></div>';
         }
         function getPricePanel() {
           var priceType='<label id="lastPrice"></label>';
@@ -193,7 +193,7 @@ html
             if settings.display.movement == true
               li#movement
                 a.navbar-link.loading(href='/movement')
-                  span.fa.fa-money
+                  span.far.fa-money-bill-alt
                   span.menu-text #{settings.locale.menu_movement}
             if settings.display.network == true
               li#network
@@ -203,12 +203,12 @@ html
             if settings.display.richlist == true
               li#richlist
                 a.navbar-link(href='/richlist')
-                  span.fa.fa-btc
+                  span.fab.fa-btc
                   span.menu-text #{settings.locale.menu_richlist}
             if settings.display.markets == true
               li#markets
                 a.navbar-link.loading(href='/markets/#{settings.markets.default}')
-                  span.fa.fa-line-chart
+                  span.fas.fa-chart-line
                   span.menu-text #{settings.locale.menu_markets}
             if settings.display.api == true
               li#info
@@ -250,37 +250,57 @@ html
         if settings.display.github
           ul.nav.navbar-nav
             li.pull-left
-              a#github-icon(href="https://github.com/#{settings.github}", target='_blank')
-                span.glyphicon.fa.fa-github
+              a#github-icon(href="https://github.com/#{settings.github}", target='_blank', alt='#{settings.coin} Github', title='#{settings.coin} Github')
+                span.glyphicon.fab.fa-github
+        if settings.display.discord
+          ul.nav.navbar-nav
+            li.pull-left
+              a#discord-icon(href="#{settings.discord}", target='_blank', alt='#{settings.coin} Discord', title='#{settings.coin} Discord')
+                span.glyphicon.fab.fa-discord
+        if settings.display.telegram
+          ul.nav.navbar-nav
+            li.pull-left
+              a#telegram-icon(href="https://t.me/#{settings.telegram}", target='_blank', alt='#{settings.coin} Telegram', title='#{settings.coin} Telegram')
+                span.glyphicon.fab.fa-telegram
+        if settings.display.reddit
+          ul.nav.navbar-nav
+            li.pull-left
+              a#reddit-icon(href="https://reddit.com/r/#{settings.reddit}", target='_blank', alt='#{settings.coin} Reddit', title='#{settings.coin} Reddit')
+                span.glyphicon.fab.fa-reddit
+        if settings.display.youtube
+          ul.nav.navbar-nav
+            li.pull-left
+              a#youtube-icon(href="#{settings.youtube}", target='_blank', alt='#{settings.coin} YouTube', title='#{settings.coin} YouTube')
+                span.glyphicon.fab.fa-youtube
         if settings.display.slack
           ul.nav.navbar-nav
             li.pull-left
-              a#slack-icon(href="#{settings.slack}", target='_blank')
-                span.glyphicon.fa.fa-slack
+              a#slack-icon(href="#{settings.slack}", target='_blank', alt='#{settings.coin} Slack', title='#{settings.coin} Slack')
+                span.glyphicon.fab.fa-slack
         if settings.display.twitter
           ul.nav.navbar-nav
             li.pull-left
-              a#twitter-icon(href="https://twitter.com/#{settings.twitter}", target='_blank')
-                span.glyphicon.fa.fa-twitter
+              a#twitter-icon(href="https://twitter.com/#{settings.twitter}", target='_blank', alt='#{settings.coin} Twitter', title='#{settings.coin} Twitter')
+                span.glyphicon.fab.fa-twitter
         if settings.display.facebook
           ul.nav.navbar-nav
             li.pull-left
-              a#facebook-icon(href="https://www.facebook.com/#{settings.facebook}", target='_blank')
-                span.glyphicon.fa.fa-facebook
+              a#facebook-icon(href="https://www.facebook.com/#{settings.facebook}", target='_blank', alt='#{settings.coin} Facebook', title='#{settings.coin} Facebook')
+                span.glyphicon.fab.fa-facebook
         if settings.display.googleplus
           ul.nav.navbar-nav
             li.pull-left
-              a#googleplus-icon(href="https://plus.google.com/#{settings.googleplus}", target='_blank')
-                span.glyphicon.fa.fa-google-plus
+              a#googleplus-icon(href="https://plus.google.com/#{settings.googleplus}", target='_blank', alt='#{settings.coin} Google+', title='#{settings.coin} Google+')
+                span.glyphicon.fab.fa-google-plus
         if settings.display.bitcointalk
           ul.nav.navbar-nav
             li.pull-left
-              a#bitcointalk-icon(href="https://bitcointalk.org/index.php?topic=#{settings.bitcointalk}", target='_blank')
-                span.glyphicon.fa.fa-btc
+              a#bitcointalk-icon(href="https://bitcointalk.org/index.php?topic=#{settings.bitcointalk}", target='_blank', alt='#{settings.coin} Bitcointalk', title='#{settings.coin} Bitcointalk')
+                span.glyphicon.fab.fa-btc
         if settings.display.website
           ul.nav.navbar-nav
             li.pull-left
-              a#website-icon(href="#{settings.website}", target='_blank')
+              a#website-icon(href="#{settings.website}", target='_blank', alt='#{settings.coin} Website', title='#{settings.coin} Website')
                 span.glyphicon.fa.fa-link
       .col-md-4
         ul.nav

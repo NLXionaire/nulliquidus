@@ -38,6 +38,15 @@ if (settings.heavy != true) {
     'getblock', 'getrawtransaction', 'getmaxmoney', 'getvote', 'getmaxvote', 'getphase', 'getreward', 'getpeerinfo', 
     'getnextrewardestimate', 'getnextrewardwhenstr', 'getnextrewardwhensec', 'getsupply', 'gettxoutsetinfo']);
 }
+// determine if cors should be enabled
+if (settings.usecors == true) {
+	app.use(function(req, res, next) {
+	   res.header("Access-Control-Allow-Origin", settings.corsorigin);
+	   res.header('Access-Control-Allow-Methods', 'DELETE, PUT, GET, POST');
+	   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	   next();
+	});
+}
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -118,9 +127,14 @@ app.set('twitter', settings.twitter);
 app.set('facebook', settings.facebook);
 app.set('googleplus', settings.googleplus);
 app.set('bitcointalk', settings.bitcointalk);
-app.set('slack', settings.slack);
 app.set('github', settings.github);
+app.set('slack', settings.slack);
+app.set('discord', settings.discord);
+app.set('telegram', settings.telegram);
+app.set('reddit', settings.reddit);
+app.set('youtube', settings.youtube);
 app.set('website', settings.website);
+
 app.set('genesis_block', settings.genesis_block);
 app.set('index', settings.index);
 app.set('heavy', settings.heavy);

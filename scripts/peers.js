@@ -26,22 +26,25 @@ mongoose.connect(dbString, function(err) {
     request({uri: 'http://127.0.0.1:' + settings.port + '/api/getpeerinfo', json: true}, function (error, response, body) {
       lib.syncLoop(body.length, function (loop) {
         var i = loop.iteration();
-        var address = body[i].addr.split(':')[0];
+		var address = body[i].addr.substring(0, body[i].addr.lastIndexOf(":")).replace("[","").replace("]","");
+		var rateLimit = new RateLimit(1, 2000, false);
         db.find_peer(address, function(peer) {
           if (peer) {
             // peer already exists
             loop.next();
           } else {
-            request({uri: 'http://freegeoip.net/json/' + address, json: true}, function (error, response, geo) {
-              db.create_peer({
-                address: address,
-                protocol: body[i].version,
-                version: body[i].subver.replace('/', '').replace('/', ''),
-                country: geo.country_name
-              }, function(){
-                loop.next();
+			rateLimit.schedule(function() {
+              request({uri: 'https://geoip.nekudo.com/api/' + address, json: true}, function (error, response, geo) {
+                db.create_peer({
+                  address: address,
+                  protocol: body[i].version,
+                  version: body[i].subver.replace('/', '').replace('/', ''),
+                  country: geo.country.name
+                }, function(){
+                  loop.next();
+                });
               });
-            });
+			});
           }
         });
       }, function() {
@@ -50,3 +53,52 @@ mongoose.connect(dbString, function(err) {
     });
   }
 });
+
+// rate limiting class from Matteo Agosti via https://www.matteoagosti.com/blog/2013/01/22/rate-limiting-function-calls-in-javascript/
+var RateLimit = (function() {
+  var RateLimit = function(maxOps, interval, allowBursts) {
+    this._maxRate = allowBursts ? maxOps : maxOps / interval;
+    this._interval = interval;
+    this._allowBursts = allowBursts;
+
+    this._numOps = 0;
+    this._start = new Date().getTime();
+    this._queue = [];
+  };
+
+  RateLimit.prototype.schedule = function(fn) {
+    var that = this,
+        rate = 0,
+        now = new Date().getTime(),
+        elapsed = now - this._start;
+
+    if (elapsed > this._interval) {
+      this._numOps = 0;
+      this._start = now;
+    }
+
+    rate = this._numOps / (this._allowBursts ? 1 : elapsed);
+
+    if (rate < this._maxRate) {
+      if (this._queue.length === 0) {
+        this._numOps++;
+        fn();
+      }
+      else {
+        if (fn) this._queue.push(fn);
+
+        this._numOps++;
+        this._queue.shift()();
+      }
+    }
+    else {
+      if (fn) this._queue.push(fn);
+
+      setTimeout(function() {
+        that.schedule();
+      }, 1 / this._maxRate);
+    }
+  };
+
+  return RateLimit;
+})();

@@ -96,13 +96,17 @@ tr {
 	margin-left:5px;
 }
 
-#twitter-icon, 
-#facebook-icon, 
-#googleplus-icon, 
-#bitcointalk-icon, 
-#website-icon, 
-#github-icon, 
-#slack-icon {
+#twitter-icon,
+#facebook-icon,
+#googleplus-icon,
+#bitcointalk-icon,
+#website-icon,
+#github-icon,
+#slack-icon,
+#discord-icon,
+#telegram-icon,
+#reddit-icon,
+#youtube-icon {
 	font-size: 20px;
 }
 
@@ -116,13 +120,17 @@ tr {
 	margin-right: 10px;
 }
 
-#twitter-icon img, 
-#facebook-icon img, 
-#googleplus-icon img, 
-#bitcointalk-icon img, 
-#website-icon img, 
-#github-icon img, 
-#slack-icon img{
+#twitter-icon img,
+#facebook-icon img,
+#googleplus-icon img,
+#bitcointalk-icon img,
+#website-icon img,
+#github-icon img,
+#slack-icon img,
+#discord-icon img,
+#telegram-icon img,
+#reddit-icon img,
+#youtube-icon img{
 	width: 40px;
 	margin: 5px 5px;
 }

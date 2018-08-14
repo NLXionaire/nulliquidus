@@ -1,4 +1,14 @@
-Note: All updates require the explorer to be restarted
+NOTE: All updates require the explorer to be restarted
+
+1.0.1
+-Added basic CORS support (see settings.json.template)
+-Replaced legacy/expired geolocation service freegeoip.net with geoip.nekudo.com for country lookups on the Network page
+-Added rate limiting to the country lookups on the Network page
+-Added discord, telegram, reddit and youtube links (see settings.json.template)
+-Added alt and title tags for all social media buttons
+-Updated font awesome from v4.3.0 to v5.2.0
+-Fix for broken ipv6 addresses from the peers list on the Network tab
+-Fix for missing country info from the peers list on the Network tab
 
 1.0.0
 -Cloned from ciquidus 1.7.2

@@ -70,13 +70,17 @@
     "api": true,
     "markets": true,
     "richlist": true,
-    "twitter": true,
+    "twitter": false,
     "facebook": false,
     "googleplus": false,
     "bitcointalk": false,
     "website": false,
     "slack": false,
     "github": false,
+    "discord": false,
+    "telegram": false,
+    "reddit": false,
+    "youtube": false,
     "search": true,
     "movement": true,
     "network": true,
@@ -131,14 +135,18 @@
     "high_flag": 5000
   },
 
-  // twitter, facebook, googleplus, bitcointalk, github, slack, website
-  "twitter": "youttwitterpage",
-  "facebook": "yourfacebookpage",
-  "googleplus": "yourgooglepluspage",
-  "bitcointalk": "yourbitcointalktopicvalue",
-  "github": "yourgithubusername/yourgithubrepo",
-  "slack": "yourfullslackinviteurl",
-  "website": "yourfullwebsiteurl",
+  // twitter, facebook, googleplus, bitcointalk, github, slack, discord, telegram, reddit, youtube, website
+  "twitter": "your-twitter-username",
+  "facebook": "your-facebook-username",
+  "googleplus": "your-google-plus-username",
+  "bitcointalk": "your-bitcointalk-topic-value",
+  "github": "your-github-username/your-github-repo",
+  "slack": "your-full-slack-invite-url",
+  "discord": "your-full-discord-invite-url",
+  "telegram": "your-telegram-group-or-channel-name",
+  "reddit": "your-subreddit-name",
+  "youtube": "your-full-youtube-url",
+  "website": "your-full-website-url",
 
   //genesis
   "genesis_tx": "3bcd33b7d38538c060ba28f02dc983e364bb7b84303b505c216c2c0fb935568e",
@@ -169,6 +177,12 @@
   // nethash unitd: sets nethash API return units
   // valid options: "P" (PH/s), "T" (TH/s), "G" (GH/s), "M" (MH/s), "K" (KH/s)
   "nethash_units": "G",
+  
+  // simple Cross-Origin Resource Sharing (CORS) support
+  // enabling this feature will add a new output header to all requests like this: Access-Control-Allow-Origin: <corsorigin>
+  // corsorigin "*" will allow any origin to access the requested resource while specifying any other value for corsorigin will allow cross-origin requests only when the request is made from a source that matches the corsorigin filter
+  "usecors": false,
+  "corsorigin": "*",
 
   // Address labels
   // example : "CGTta3M4t3yXu8uRgkKvaWd2d8DQvDPnpL": {"label": "This is a burn address", "type":"danger", "url":"http://example.com"}
