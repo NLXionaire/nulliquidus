@@ -1,4 +1,4 @@
-Nulliquidus - 1.0.1
+Nulliquidus - 1.0.2
 ================
 
 The NulleX block explorer.

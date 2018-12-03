@@ -1,5 +1,11 @@
 NOTE: All updates require the explorer to be restarted
 
+1.0.2
+-Added last usd price to the coinstats table
+-Added coindesk api syncing for bitcoin price
+-Added a new public api /ext/getcurrentprice
+-Updated express dependency version
+
 1.0.1
 -Added basic CORS support (see settings.json.template)
 -Replaced legacy/expired geolocation service freegeoip.net with geoip.nekudo.com for country lookups on the Network page
