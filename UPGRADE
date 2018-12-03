@@ -4,6 +4,7 @@ NOTE: All updates require the explorer to be restarted
 -Added last usd price to the coinstats table
 -Added coindesk api syncing for bitcoin price
 -Added a new public api /ext/getcurrentprice
+-All http/api calls now pass in a user-agent for better compatibility
 -Updated old package dependency versions
 
 1.0.1
