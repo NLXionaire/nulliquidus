@@ -223,6 +223,10 @@ is_locked(function (exists) {
               }
             });
           }
+		  // Get the last usd price for coinstats
+		  db.get_last_usd_price(function(retVal) {
+			  //console.log(retVal);
+		  });
         }
       });
     });
